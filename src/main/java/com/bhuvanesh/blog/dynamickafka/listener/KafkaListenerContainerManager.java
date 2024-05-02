@@ -13,7 +13,6 @@ import org.springframework.kafka.config.MethodKafkaListenerEndpoint;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
-import org.springframework.messaging.converter.SmartMessageConverter;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 import org.springframework.stereotype.Component;
 
@@ -37,15 +36,10 @@ public class KafkaListenerContainerManager<K, V> {
     kafkaListenerEndpoint.setTopics(properties.getTopic());
     kafkaListenerEndpoint.setMessageHandlerMethodFactory(new DefaultMessageHandlerMethodFactory());
     kafkaListenerEndpoint.setConsumerProperties(buildConsumerProperties());
-    kafkaListenerEndpoint.setMessagingConverter(messageConverter());
     kafkaListenerEndpoint.setBean(properties.getMessageListener());
     kafkaListenerEndpoint.setMethod(properties.getMessageListener().getClass().getMethod("onMessage", ConsumerRecord.class));
 
     return kafkaListenerEndpoint;
-  }
-
-  private SmartMessageConverter messageConverter() {
-    return new MessageConverter();
   }
 
   private Properties buildConsumerProperties() {
