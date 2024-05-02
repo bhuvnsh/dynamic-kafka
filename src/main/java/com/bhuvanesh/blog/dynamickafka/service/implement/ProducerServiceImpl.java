@@ -1,7 +1,5 @@
 package com.bhuvanesh.blog.dynamickafka.service.implement;
 
-import com.bhuvanesh.blog.dynamickafka.dto.MessageDTO;
-import com.bhuvanesh.blog.dynamickafka.dto.ProducerDTO;
 import com.bhuvanesh.blog.dynamickafka.producer.KafkaProducerManager;
 import com.bhuvanesh.blog.dynamickafka.service.ProducerService;
 import lombok.RequiredArgsConstructor;
