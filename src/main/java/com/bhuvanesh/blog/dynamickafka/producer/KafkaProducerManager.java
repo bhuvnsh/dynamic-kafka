@@ -9,6 +9,7 @@ import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.core.RoutingKafkaTemplate;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 import org.springframework.stereotype.Component;
 import software.amazon.msk.auth.iam.IAMClientCallbackHandler;
 import software.amazon.msk.auth.iam.IAMLoginModule;
@@ -27,11 +28,11 @@ public class KafkaProducerManager {
   private final GenericApplicationContext context;
   private final Map<Pattern, ProducerFactory<Object, Object>> map = new LinkedHashMap<>();
 
-  public DefaultKafkaProducerFactory<Object, Object> createProducer() {
+  private DefaultKafkaProducerFactory<Object, Object> createProducer() {
     Map<String, Object> props = new HashMap<>();
     props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-    props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.springframework.kafka.support.serializer.JsonSerializer");
-    props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.springframework.kafka.support.serializer.JsonSerializer");
+    props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+    props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
     return new DefaultKafkaProducerFactory<>(props);
   }
