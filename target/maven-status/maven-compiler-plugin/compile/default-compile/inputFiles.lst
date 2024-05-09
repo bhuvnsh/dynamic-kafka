@@ -3,17 +3,11 @@
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/controller/ProducerApi.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/service/ProducerService.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/util/Consumer.java
-/Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/listener/MessageConverter.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/listener/ListenerKafkaProperties.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/controller/ConsumerController.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/service/ConsumerService.java
-/Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/producer/ProducerKafkaProperties.java
-/Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/dto/MessageDTO.java
-/Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/listener/CustomMessageListener.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/producer/KafkaProducerManager.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/listener/KafkaListenerContainerManager.java
-/Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/dto/ConsumerDTO.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/controller/ProducerController.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/service/implement/ProducerServiceImpl.java
 /Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/DynamicKafkaApplication.java
-/Users/bhuvaneshwar/Documents/Practice/blog/dynamic-kafka/src/main/java/com/bhuvanesh/blog/dynamickafka/dto/ProducerDTO.java

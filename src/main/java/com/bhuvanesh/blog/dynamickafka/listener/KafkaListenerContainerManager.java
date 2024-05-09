@@ -11,11 +11,14 @@ import org.springframework.kafka.config.KafkaListenerEndpoint;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.kafka.config.MethodKafkaListenerEndpoint;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
+import org.springframework.kafka.listener.MessageListenerContainer;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+import java.util.Optional;
 import java.util.Properties;
 
 @Slf4j
@@ -42,6 +45,13 @@ public class KafkaListenerContainerManager<K, V> {
     return kafkaListenerEndpoint;
   }
 
+  @SneakyThrows
+  public void registerListener(ListenerKafkaProperties properties, boolean startImmediately) {
+    kafkaListenerEndpointRegistry.registerListenerContainer(
+        createKafkaListenerEndpoint(properties), kafkaListenerContainerFactory, startImmediately
+    );
+  }
+
   private Properties buildConsumerProperties() {
     Properties consumerProperties = new Properties();
     consumerProperties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -57,11 +67,16 @@ public class KafkaListenerContainerManager<K, V> {
     return consumerProperties;
   }
 
-  @SneakyThrows
-  public void registerListener(ListenerKafkaProperties properties, boolean startImmediately) {
-    kafkaListenerEndpointRegistry.registerListenerContainer(
-        createKafkaListenerEndpoint(properties), kafkaListenerContainerFactory, startImmediately
-    );
+  public Collection<MessageListenerContainer> listContainers() {
+    return kafkaListenerEndpointRegistry.getListenerContainers();
+  }
+
+  public Optional<MessageListenerContainer> getContainer(String listenerId) {
+    return Optional.ofNullable(kafkaListenerEndpointRegistry.getListenerContainer(listenerId));
+  }
+
+  public void unregisterListener(String listenerId) {
+    kafkaListenerEndpointRegistry.unregisterListenerContainer(listenerId);
   }
 
 }
