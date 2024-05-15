@@ -25,6 +25,7 @@ public class ConsumerServiceImpl implements ConsumerService {
         .topic("my-topic")
         .groupId("group-id-" + index.getAndIncrement())
         .listenerId(UUID.randomUUID().toString())
+        .concurrency(5)
         .messageListener(consumer)
         .build();
     kafkaListenerManager.registerListener(kafkaProperties, true);

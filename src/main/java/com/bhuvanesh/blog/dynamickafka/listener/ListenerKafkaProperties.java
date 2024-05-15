@@ -12,5 +12,6 @@ public class ListenerKafkaProperties {
   private final String listenerId;
   private final String topic;
   private final String partition;
+  private final Integer concurrency;
   private final MessageListener messageListener;
 }

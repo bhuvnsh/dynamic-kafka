@@ -40,6 +40,7 @@ public class KafkaListenerContainerManager<K, V> {
     kafkaListenerEndpoint.setMessageHandlerMethodFactory(new DefaultMessageHandlerMethodFactory());
     kafkaListenerEndpoint.setConsumerProperties(buildConsumerProperties());
     kafkaListenerEndpoint.setBean(properties.getMessageListener());
+    kafkaListenerEndpoint.setConcurrency(properties.getConcurrency());
     kafkaListenerEndpoint.setMethod(properties.getMessageListener().getClass().getMethod("onMessage", ConsumerRecord.class));
 
     return kafkaListenerEndpoint;
