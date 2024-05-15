@@ -10,6 +10,7 @@ import org.springframework.kafka.core.RoutingKafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +18,7 @@ import java.util.UUID;
 public class ProducerServiceImpl implements ProducerService {
   private final KafkaProducerManager producerManager;
   private RoutingKafkaTemplate template;
+  AtomicInteger index = new AtomicInteger(1);
 
   @Override
   public String createProducer() {
@@ -26,9 +28,11 @@ public class ProducerServiceImpl implements ProducerService {
 
   @Override
   public String produceMessage() {
+    String key = "test-key-" + index.getAndIncrement();
     String msg = UUID.randomUUID().toString();
+
     log.info("sending msg: {}", msg);
-    template.send("my-topic", msg);
+    template.send("my-topic", key, msg);
     return "produced message";
   }
 
